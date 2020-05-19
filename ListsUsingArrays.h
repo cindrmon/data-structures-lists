@@ -3,14 +3,10 @@
 // modifiable array maximum size (must not exceed 2,147,483,647; cuz if u do, i'll go to your fucking house and fucking kill you)
 #define MAX_SIZE 1000
 
-// array only typedef: used only for array variables
-typedef int ARRAY;
-// array size typedef: used for manual input of how much an array is based on user input
-typedef int ARRAY_SIZE;
-// USER_INPUT typedef: used for user-inputted data
-typedef int USER_INPUT;
-// ETC typedef: used for user-inputted data positions
-typedef int ETC;
+typedef int ARRAY; // array only typedef: used only for array variables
+typedef int ARRAY_SIZE; // array size typedef: used for manual input of how much an array is based on user input
+typedef int USER_INPUT; // USER_INPUT typedef: used for user-inputted data
+typedef int ETC; // ETC typedef: used for user-inputted data positions
 
 using namespace std;
 
@@ -33,7 +29,7 @@ using namespace std;
 */
 
 // function to test if list is full (returns 1 if full or 0 if not full)
-int listFull(ARRAY_SIZE ListSize)
+int ArrayListFull(ARRAY_SIZE ListSize)
 {
 
     if (ListSize == MAX_SIZE - 1)
@@ -43,7 +39,7 @@ int listFull(ARRAY_SIZE ListSize)
 }
 
 // function to test if list is empty (returns 1 if empty or 0 if it isn't)
-int listEmpty(ARRAY_SIZE ListSize)
+int ArrayListEmpty(ARRAY_SIZE ListSize)
 {
 
     if (ListSize < 0)
@@ -53,96 +49,97 @@ int listEmpty(ARRAY_SIZE ListSize)
 }
 
 // function to print contents of a list
-void listPrintItems(ARRAY aList[], ARRAY_SIZE ListSize)
+void ArrayPrintItems(ARRAY aList[], ARRAY_SIZE ListSize)
 {
 
-    int index;
+    int IDX;
 
     // always make this if statement to check if array is empty
-    if (listEmpty(ListSize))
-        cout << "\nThe list is empty!";
+    if (ArrayListEmpty(ListSize))
+        cout << "\nThe list is empty!\n\n";
 
     else
-        for (index = 0; index <= ListSize; ++index)
-            cout << "\nThe value of item " << index + 1 << " = " << aList[index] << ".";
+        for (IDX = 0; IDX <= ListSize; ++IDX)
+            cout << "\nThe value of item [" << IDX + 1 << "] = " << aList[IDX] << ".";
+        cout << endl << endl;
 }
 
 // function to locate an item in list and print its position (assuming items are unique)
-void listLocateItem(ARRAY aList[], USER_INPUT searchValue, ARRAY_SIZE ListSize)
+void ArrayLocateItem(ARRAY aList[], USER_INPUT searchValue, ARRAY_SIZE ListSize)
 {
 
-    int index = 0;
+    int IDX = 0;
 
     // always make this if statement to check if array is empty
-    if (listEmpty(ListSize))
-        cout << "\nThe list is empty!";
+    if (ArrayListEmpty(ListSize))
+        cout << "\nThe list is empty!\n\n";
 
     else
     {
-        while ((index != ListSize + 1) && (aList[index] != searchValue))
+        while ((IDX != ListSize + 1) && (aList[IDX] != searchValue))
         {
-            ++index;
+            ++IDX;
 
-            if (index != ListSize + 1)
-                cout << "\nItem Requested is at slot " << index + 1 << ".";
-
-            else
-                cout << "\nItem does not exist..";
         }
+        if (IDX != ListSize + 1)
+            cout << "\nItem Requested is at slot " << IDX + 1 << ".\n\n";
+
+        else
+            cout << "\nItem does not exist..\n\n";
     }
 }
 
 // function to add/insert an item in an array
-void listAddItem(ARRAY aList[], USER_INPUT newData, ETC newDataPos, ARRAY_SIZE *addrListSize)
+void ArrayAddItem(ARRAY aList[], USER_INPUT newData, ETC newDataPos, ARRAY_SIZE *addrListSize)
 {
 
-    int index;
+    int IDX;
 
     // error handling if the list is full
-    if (listFull(*addrListSize) == 1)
+    if (ArrayListFull(*addrListSize) == 1)
         cout << "\nThe list is full!";
 
     else
     {
 
         // moves all the data to clear space for new data at newDataPos to be inserted
-        for (index = *addrListSize; index >= newDataPos; --index)
-            aList[index + 1] = aList[index];
+        for (IDX = *addrListSize; IDX >= newDataPos; --IDX)
+            aList[IDX + 1] = aList[IDX];
 
         // adds the newData at newDataPos
         aList[newDataPos] = newData;
 
         // modifies the array size to +1 cuz of the new data added
         ++(*addrListSize);
-        cout << "\nItem successfully added to list..";
+        cout << "\nItem successfully added to list..\n\n";
     }
 }
 
 // function to delete an item in array
-void listDeleteItem(ARRAY aList[], ETC rmDataPos, ARRAY_SIZE *addrListSize)
+void ArrayDeleteItem(ARRAY aList[], ETC rmDataPos, ARRAY_SIZE *addrListSize)
 {
 
-    int index;
+    int IDX;
 
     // error handling if list is empty
-    if (listEmpty(*addrListSize))
-        cout << "\nThe list is empty!";
+    if (ArrayListEmpty(*addrListSize))
+        cout << "\nThe list is empty!\n\n";
 
     else
     {
 
         // moves all the data down to overwrite the deleted data at rmDataPos
-        for (index = rmDataPos + 1; index <= *addrListSize; ++index)
-            aList[index - 1] = aList[index];
+        for (IDX = rmDataPos + 1; IDX <= *addrListSize; ++IDX)
+            aList[IDX - 1] = aList[IDX];
 
         // modifies the array size to -1 cuz of the old data removed
         --(*addrListSize);
-        cout << "\nItem Successfully Removed!";
+        cout << "\nItem Successfully Removed!\n\n";
     }
 }
 
 // function to count items on list
-ARRAY_SIZE listCountItem(ARRAY_SIZE ListSize)
+ARRAY_SIZE ArrayCountItem(ARRAY_SIZE ListSize)
 {
     return (ListSize + 1);
 }
