@@ -56,7 +56,7 @@ void ArrayPrintItems(ARRAY aList[], ARRAY_SIZE ListSize)
 
     // always make this if statement to check if array is empty
     if (ArrayListEmpty(ListSize))
-        cout << "\nThe list is empty!\n\n";
+        cout << "\nThe list is empty!";
 
     else
         for (IDX = 0; IDX <= ListSize; ++IDX)
