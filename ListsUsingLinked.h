@@ -64,6 +64,7 @@ void LinkedListAddItems(LIST_SIZE NumberOfNodes) {
 
             GenesisBlock = DataSet;
             PlatformBlock = DataSet;
+            // Sets the first node to the start/genesis node
 
         }
 
@@ -71,6 +72,7 @@ void LinkedListAddItems(LIST_SIZE NumberOfNodes) {
 
             PlatformBlock->Next = DataSet;
             PlatformBlock = DataSet;
+            // moves the platform forward
 
         }
 
@@ -95,6 +97,7 @@ void LinkedListInsertItems(USER_INPUT InsertData, LIST_SIZE Position) {
 
         InsertList->Next = GenesisBlock;
         GenesisBlock = InsertList;
+        // sets data if position selects is 1 (which is the genesis block)
 
     }
 
@@ -190,10 +193,10 @@ void LinkedListLocateItems (USER_INPUT SearchData) {
         }
 
         if(PlatformBlock == NULL)
-            cout << "\nNode requested is at Node [ " << IDX << " ].\n";
+            cout << "\nNode does not exist.\n";
 
         else
-            cout << "\nNode does not exist.\n";
+            cout << "\nNode requested is at Node [ " << IDX << " ].\n";
 
     }
 
