@@ -137,7 +137,7 @@ void LinkedListDeleteItems (USER_INPUT DeleteData) {
 
     else {
 
-        if(GenesisBlock->Data = DeleteData) {
+        if(GenesisBlock->Data == DeleteData) {
 
             GenesisBlock = GenesisBlock->Next;
             free(Eliminate);
